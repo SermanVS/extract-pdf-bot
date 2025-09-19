@@ -1,7 +1,8 @@
+from tg_bot import bot, InputMatchesFilter
+
+from pathlib import Path
 from aiogram import Router
 from aiogram.types import Message
-from tg_bot import bot, InputMatchesFilter
-from pathlib import Path
 from aiogram.utils.chat_action import ChatActionSender
 
 command_router = Router()
