@@ -11,5 +11,3 @@ async def info_handler(message: Message):
     async with ChatActionSender.typing(bot=bot, chat_id=message.chat.id):
         text = "You are trying to use a command that doesn't exist. Please, check your prompt."
         await message.answer(text=text)
-        
-        

@@ -4,10 +4,11 @@ from pathlib import Path
 from aiogram import Router
 from aiogram.types import Message
 from aiogram.utils.chat_action import ChatActionSender
+from aiogram.filters import Command
 
 command_router = Router()
 
-@command_router.message(InputMatchesFilter("/info"))
+@command_router.message(Command("info"))
 async def info_handler(message: Message):
     info_filename = Path('predefined_texts') / 'info_response.md'
     async with ChatActionSender.typing(bot=bot, chat_id=message.chat.id):
@@ -16,7 +17,7 @@ async def info_handler(message: Message):
             text = f.read()
         await message.answer(text=text, parse_mode="markdown", disable_web_page_preview=True)
 
-@command_router.message(InputMatchesFilter("/start"))
+@command_router.message(Command("start"))
 async def start_handler(message: Message):
     start_filename = Path('predefined_texts') / 'start_response.md'
     async with ChatActionSender.typing(bot=bot, chat_id=message.chat.id):
