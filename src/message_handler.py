@@ -22,7 +22,7 @@ file_downloader = FileDownloader()
 
 @message_router.message()
 async def analyze_message(message: types.Message):
-    if message.message_thread_id != 2: # Monitoring only specified topic (thread)
+    if message.message_thread_id not in config.MONITORED_THREADS: # Monitoring only specified topics (threads)
         return
     list_of_urls = []
     article_urls = message_parser.parse(message.text)
